@@ -1,41 +1,116 @@
 
-.envelope {
-  width: min(300px, 85%);
-  margin: 35px auto 10px;
-  padding: 35px 15px;
-  border: 1px solid #e9aabd77;
-  border-radius: 22px;
-  background: linear-gradient(145deg,#54243f,#281326);
-  box-shadow: 0 15px 55px #0007,0 0 30px #e9aabd22;
-  cursor: pointer;
-  transition: .4s;
-  animation: float 3s ease-in-out infinite;
-}
-.envelope:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #e9aabd66;
-}
-.env-icon { font-size: 65px; }
-.env-text {
-  margin-top: 15px;
-  color: #f4c2d1;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-.env-hint {
-  margin-top: 12px;
-  color: #fff;
-  font-size: 12px;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-9px); }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* SEVARA SPECIAL ENVELOPE */
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #67334e 0%, transparent 55%),
+    linear-gradient(145deg, #190b18, #100913 70%);
+  color: #fff0f5;
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+  padding: 45px 18px;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent),
+    radial-gradient(2px 2px at 70% 20%, white 50%, transparent),
+    radial-gradient(1px 1px at 40% 70%, white 50%, transparent),
+    radial-gradient(2px 2px at 85% 80%, white 50%, transparent);
+  background-size: 230px 230px;
+}
+
+.eyebrow {
+  color: #dca5b9;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: clamp(65px, 13vw, 105px);
+  font-weight: 400;
+  letter-spacing: -5px;
+  margin: 15px 0;
+}
+
+h1 span {
+  color: #e6a4bc;
+}
+
+.subtitle {
+  color: #d6bac7;
+  font-size: 17px;
+  margin-bottom: 45px;
+}
+
+.card {
+  padding: 32px 24px;
+  margin: 25px auto;
+  border: 1px solid #e9aabd35;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #ffffff0c, #ffffff04);
+  box-shadow: 0 20px 70px #0005;
+  backdrop-filter: blur(12px);
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.countdown div {
+  padding: 17px 5px;
+  border: 1px solid #e9aabd30;
+  border-radius: 13px;
+  background: #ffffff08;
+}
+
+.countdown b {
+  display: block;
+  font-size: clamp(25px, 7vw, 38px);
+  font-weight: 400;
+  color: #f5c5d6;
+}
+
+.countdown small {
+  display: block;
+  color: #c9a6b7;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.date {
+  color: #dca5b9;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
 .envelope {
   width: min(300px, 85%);
-  margin: 35px auto 10px;
+  margin: 35px auto 20px;
   padding: 35px 15px;
   border: 1px solid #e9aabd77;
   border-radius: 22px;
@@ -59,6 +134,7 @@
 .env-text {
   margin-top: 15px;
   color: #f4c2d1;
+  font-family: Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 3px;
 }
@@ -69,12 +145,61 @@
   font-size: 12px;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-9px);
-  }
+button {
+  padding: 14px 23px;
+  margin: 8px 5px;
+  border: 1px solid #e9aabd70;
+  border-radius: 30px;
+  background: #54243f;
+  color: #fff0f5;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .3s;
 }
 
+button:hover {
+  background: #854461;
+  transform: translateY(-2px);
+}
+
+h2 {
+  font-size: 29px;
+  font-weight: 400;
+  margin: 15px 0 25px;
+  color: #f5c5d6;
+}
+
+#letter p:not(.eyebrow) {
+  color: #ead5df;
+  line-height: 1.9;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+.signature {
+  color: #e9aabd !important;
+  margin-top: 30px !important;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  color: #9d788a;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin: 45px 0 15px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@media (max-width: 400px) {
+  body { padding: 35px 12px; }
+  .card { padding: 25px 13px; }
+  .countdown { gap: 6px; }
+}
