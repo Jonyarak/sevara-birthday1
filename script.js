@@ -1,0 +1,7 @@
+const target=new Date("2026-11-01T00:00:00+05:00").getTime();
+function tick(){let d=Math.max(0,target-Date.now());document.getElementById("days").textContent=String(Math.floor(d/86400000)).padStart(2,"0");document.getElementById("hours").textContent=String(Math.floor(d/3600000)%24).padStart(2,"0");document.getElementById("minutes").textContent=String(Math.floor(d/60000)%60).padStart(2,"0");document.getElementById("seconds").textContent=String(Math.floor(d/1000)%60).padStart(2,"0");if(!d)document.querySelector(".card .eyebrow").textContent="HAPPY BIRTHDAY, SEVARA"}
+tick();setInterval(tick,1000);
+document.getElementById("reveal").onclick=()=>{document.getElementById("letter").classList.remove("hidden");document.getElementById("letter").scrollIntoView({behavior:"smooth",block:"center"})};
+let ctx=null,timer=null,on=false;const notes=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
+function note(f){let o=ctx.createOscillator(),g=ctx.createGain();o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.045,ctx.currentTime+.04);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+1.05)}
+document.getElementById("music").onclick=async()=>{on=!on;let b=document.getElementById("music");if(on){ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();await ctx.resume();let i=0;timer=setInterval(()=>note(notes[i++%notes.length]),850);b.textContent="♫ MUSIC ON"}else{clearInterval(timer);b.textContent="♫ MUSIC OFF"}};
